@@ -1,0 +1,131 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App has a valid snapshot 1`] = `
+<div
+  className="page"
+>
+  <div
+    className="interactions"
+  >
+    <form
+      onSubmit={[Function]}
+    >
+      Search title:
+      <input
+        onChange={[Function]}
+        type="text"
+        value=""
+      />
+      <button
+        className=""
+        onClick={undefined}
+        type="submit"
+      >
+         Go! 
+      </button>
+    </form>
+  </div>
+  <div>
+     No results 
+  </div>
+  <span>
+    Loading ... 
+  </span>
+</div>
+`;
+
+exports[`Articles has a valid snapshot 1`] = `
+<div
+  className="table"
+>
+  <div>
+    <span>
+      <a
+        href={undefined}
+      >
+         
+        Hello
+         
+      </a>
+    </span>
+    <span>
+      World
+       
+    </span>
+    <span>
+      2
+    </span>
+    <span>
+      20
+    </span>
+    <span>
+      <button
+        className="button-inline"
+        onClick={[Function]}
+        type="button"
+      >
+        Dismiss
+      </button>
+    </span>
+  </div>
+  <div>
+    <span>
+      <a
+        href={undefined}
+      >
+         
+        Foo
+         
+      </a>
+    </span>
+    <span>
+      Bar
+       
+    </span>
+    <span>
+      6
+    </span>
+    <span>
+      10
+    </span>
+    <span>
+      <button
+        className="button-inline"
+        onClick={[Function]}
+        type="button"
+      >
+        Dismiss
+      </button>
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Button has a valid snapshot 1`] = `
+<button
+  className=""
+  onClick={undefined}
+  type="button"
+>
+   Hello world 
+</button>
+`;
+
+exports[`Search has a valid snapshot 1`] = `
+<form
+  onSubmit={undefined}
+>
+  <input
+    onChange={undefined}
+    type="text"
+    value={undefined}
+  />
+  <button
+    className=""
+    onClick={undefined}
+    type="submit"
+  >
+     Go! 
+  </button>
+</form>
+`;
