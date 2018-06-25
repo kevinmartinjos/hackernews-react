@@ -13,7 +13,10 @@ const PARAM_SEARCH = 'query=';
 const PARAM_PAGE = 'page=';
 
 const mapStateToArticleProps = state => {
-    return {articles: state.articleState.articles};
+    return {
+        articles: state.articleState.articles,
+        archivedArticleIDs: state.archiveState.articles.map(article => article.objectID)
+    };
 };
 
 const mapDispatchToArticleProps = dispatch => {
@@ -98,9 +101,8 @@ class MainContent extends Component {
                 >
                     Search title:
                 </Search>
-
                 {isArchive ? <ConnectedArchives/> : <ConnectedArticles/>}
-                <ButtonWithLoading onClick={this.loadMore} isLoading={isLoading}>Moar!</ButtonWithLoading>
+                {!isArchive && <ButtonWithLoading onClick={this.loadMore} isLoading={isLoading}>Moar!</ButtonWithLoading>}
                 <CommentBrowser />
             </div>
         )

@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from "../Buttons/Button";
 
-const Articles = ({articles, onArchive}) =>
+const Articles = ({articles, archivedArticleIDs, onArchive}) =>
     <div id="Articles">
         {articles.map(article =>
             <div key={article.objectID}>
@@ -9,14 +9,16 @@ const Articles = ({articles, onArchive}) =>
                 <span>{article.author} </span>
                 <span>{article.num_comments}</span>
                 <span>{article.points}</span>
-                <span>
-                            <Button
-                                onClick={() => onArchive(article)}
-                                className="button-inline"
-                            >
-                                Archive
-                            </Button>
-                        </span>
+                {!archivedArticleIDs.includes(article.objectID) &&
+                    <span>
+                        <Button
+                            onClick={() => onArchive(article)}
+                            className="button-inline"
+                        >
+                            Archive
+                        </Button>
+                    </span>
+                }
             </div>
         )}
     </div>;

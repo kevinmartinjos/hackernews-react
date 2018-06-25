@@ -8,12 +8,16 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import archiveReducer, {articleReducer} from "./Reducers/Reducers";
 
+const persistedState = localStorage.getItem('hackernews_state') ? JSON.parse(localStorage.getItem('hackernews_state')) : {};
 const rootReducer = combineReducers({
     archiveState: archiveReducer,
     articleState: articleReducer
 });
 
-const store = createStore(rootReducer);
+const store = createStore(rootReducer, persistedState);
+store.subscribe(() => {
+   localStorage.setItem('hackernews_state', JSON.stringify(store.getState()));
+});
 
 ReactDOM.render(
     <Provider store={store}>
