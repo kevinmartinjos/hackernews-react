@@ -1,12 +1,13 @@
 import React from 'react';
+import {Button} from 'semantic-ui-react';
 import {WithLoading} from "../Loading/Loading";
 
-const Button = ({type="button", onClick, children, className=''}) =>
-    <button type={type} onClick={onClick} className={className} id="MoreButton">
+const MoreButton = ({type="button", onClick, children, className='', size="mini"}) =>
+    <Button type={type} onClick={onClick} className={className} id="MoreButton" size={size}>
         {children}
-    </button>;
+    </Button>;
 
-const ButtonWithLoading = WithLoading(Button);
+const ButtonWithLoading = WithLoading(MoreButton);
 
-export {Button, ButtonWithLoading};
-export default Button;
+export {MoreButton, ButtonWithLoading};
+export default MoreButton;

@@ -1,5 +1,5 @@
 import React, {Component, createRef} from "react";
-import Button from "../Buttons/Button";
+import {Form, Button} from 'semantic-ui-react';
 
 class Search extends Component {
     constructor(props) {
@@ -14,11 +14,12 @@ class Search extends Component {
     render() {
         const {onSubmit, searchTerm, children, onSearchTermChange} = this.props;
         return (
-            <form onSubmit={onSubmit} id="Search">
-                {children}
-                <input type="text" value={searchTerm} onChange={onSearchTermChange} ref={this.searchBoxRef}/>
-                <Button type="submit"> Go! </Button>
-            </form>
+            <Form onSubmit={onSubmit} id="Search">
+                <Form.Group>
+                    <Form.Input type="text" value={searchTerm} onChange={onSearchTermChange} ref={this.searchBoxRef} placeholder="Search"/>
+                    <Button type="submit"> Go! </Button>
+                </Form.Group>
+            </Form>
         );
     }
 }

@@ -110,9 +110,7 @@ class MainContent extends Component {
                     searchTerm={searchTerm}
                     onSearchTermChange={this.onSearchTermChange}
                     onSubmit={this.onSearchSubmit}
-                >
-                    Search title:
-                </Search>
+                />
                 {isArchive ? <ConnectedArchives/> : <ConnectedArticles onViewComments={this.onViewComments}/>}
                 {!isArchive && <ButtonWithLoading onClick={this.loadMore} isLoading={isLoading}>Moar!</ButtonWithLoading>}
                 <CommentBrowser parentComment={selectedArticle} isCommentLoading={isCommentLoading}/>

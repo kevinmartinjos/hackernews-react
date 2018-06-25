@@ -8,7 +8,7 @@
 }
 
 #Navbar {
-    grid-area: 1/1/1/2;
+    grid-area: 1/1/1/6;
 }
 
 #MainContent {
@@ -18,7 +18,7 @@
 }
 
 #Search {
-    grid-area: 1/1/2/6;
+    grid-area: 1/1/2/3;
 }
 
 #Articles {
@@ -30,7 +30,7 @@
 }
 
 #CommentBrowser {
-    grid-area: 2/5/2/7;
+    grid-area: 2/6/2/7;
 }
 
 #Archives {
