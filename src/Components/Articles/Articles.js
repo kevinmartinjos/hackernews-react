@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from "../Buttons/Button";
 
-const Articles = ({articles, archivedArticleIDs, onArchive}) =>
+const Articles = ({articles, archivedArticleIDs, onArchive, onViewComments}) =>
     <div id="Articles">
         {articles.map(article =>
             <div key={article.objectID}>
@@ -19,6 +19,7 @@ const Articles = ({articles, archivedArticleIDs, onArchive}) =>
                         </Button>
                     </span>
                 }
+                <span><Button onClick={() => onViewComments(article.objectID)}>View comments</Button></span>
             </div>
         )}
     </div>;

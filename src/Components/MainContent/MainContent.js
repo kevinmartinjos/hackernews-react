@@ -44,7 +44,9 @@ class MainContent extends Component {
         super(props);
         this.state = {
             searchTerm: this.props.searchTerm,
-            isLoading: false
+            isLoading: false,
+            selectedArticle: {children: []},
+            isCommentLoading: false
         };
 
         this.onSearchTermChange = this.onSearchTermChange.bind(this);
@@ -52,6 +54,7 @@ class MainContent extends Component {
         this.onSearchSubmit = this.onSearchSubmit.bind(this);
         this.fetchSearchResult = this.fetchSearchResult.bind(this);
         this.loadMore = this.loadMore.bind(this);
+        this.onViewComments = this.onViewComments.bind(this);
     }
 
     onSearchTermChange(event) {
@@ -81,6 +84,15 @@ class MainContent extends Component {
         this.props.onSearchSubmit();
         this.fetchSearchResult(searchTerm);
     }
+    onViewComments(objectID) {
+        const PATH_BASE = 'http://hn.algolia.com/api/v1/items/';
+        this.setState({isCommentLoading: true});
+        fetch(`${PATH_BASE}${objectID}`).
+        then(response => response.json()).
+        then(result => this.setState({
+                selectedArticle: result, isCommentLoading: false
+            }));
+    }
     componentDidMount() {
         const {searchTerm} = this.state;
         if(!this.props.articles.length) {
@@ -89,7 +101,7 @@ class MainContent extends Component {
     }
 
     render() {
-        const {searchTerm, isLoading} = this.state;
+        const {searchTerm, isLoading, selectedArticle, isCommentLoading} = this.state;
         const {isArchive} = this.props;
 
         return (
@@ -101,9 +113,9 @@ class MainContent extends Component {
                 >
                     Search title:
                 </Search>
-                {isArchive ? <ConnectedArchives/> : <ConnectedArticles/>}
+                {isArchive ? <ConnectedArchives/> : <ConnectedArticles onViewComments={this.onViewComments}/>}
                 {!isArchive && <ButtonWithLoading onClick={this.loadMore} isLoading={isLoading}>Moar!</ButtonWithLoading>}
-                <CommentBrowser />
+                <CommentBrowser parentComment={selectedArticle} isCommentLoading={isCommentLoading}/>
             </div>
         )
     }
