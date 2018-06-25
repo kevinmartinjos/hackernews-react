@@ -2,7 +2,7 @@ import React from 'react';
 import Button from "../Buttons/Button";
 
 const Articles = ({articles, searchTerm, onDismiss}) =>
-    <div className="table">
+    <div id="Articles">
         {articles.map(article =>
             <div key={article.objectID}>
                 <span><a href={article.url}> {article.title} </a></span>
@@ -14,7 +14,7 @@ const Articles = ({articles, searchTerm, onDismiss}) =>
                                 onClick={() => onDismiss(article.objectID)}
                                 className="button-inline"
                             >
-                                Dismiss
+                                Archive
                             </Button>
                         </span>
             </div>

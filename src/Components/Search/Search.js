@@ -14,7 +14,7 @@ class Search extends Component {
     render() {
         const {onSubmit, searchTerm, children, onSearchTermChange} = this.props;
         return (
-            <form onSubmit={onSubmit}>
+            <form onSubmit={onSubmit} id="Search">
                 {children}
                 <input type="text" value={searchTerm} onChange={onSearchTermChange} ref={this.searchBoxRef}/>
                 <Button type="submit"> Go! </Button>

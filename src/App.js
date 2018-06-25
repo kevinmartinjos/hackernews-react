@@ -3,6 +3,9 @@ import './App.css';
 import Search from "./Components/Search/Search";
 import Articles from "./Components/Articles/Articles";
 import {ButtonWithLoading} from "./Components/Buttons/Button";
+import Navbar from "./Components/Layouts/Navbar";
+import Sidebar from "./Components/Layouts/Sidebar";
+import CommentBrowser from "./Components/Comments/CommentBrowser";
 
 const PATH_BASE = 'https://hn.algolia.com/api/v1';
 const PATH_SEARCH = '/search';
@@ -19,7 +22,7 @@ class App extends Component {
             isLoading: false
         };
 
-        this.onDismiss = this.onDismiss.bind(this);
+        this.onArchive = this.onArchive.bind(this);
         this.onSearchTermChange = this.onSearchTermChange.bind(this);
         this.setSearchResult = this.setSearchResult.bind(this);
         this.onSearchSubmit = this.onSearchSubmit.bind(this);
@@ -30,7 +33,7 @@ class App extends Component {
     onSearchTermChange(event) {
         this.setState({searchTerm: event.target.value});
     }
-    onDismiss(objectID) {
+    onArchive(objectID) {
         const updatedArticles = this.state.articles.filter(article => article.objectID !== objectID)
         this.setState({articles: updatedArticles})
     }
@@ -64,8 +67,10 @@ class App extends Component {
     render() {
         const {searchTerm, articles, isLoading} = this.state;
         return (
-            <div className="page">
-                <div className="interactions">
+            <div id="app">
+                <Navbar />
+                <Sidebar />
+                <div id="MainContent">
                     <Search
                         searchTerm={searchTerm}
                         onSearchTermChange={this.onSearchTermChange}
@@ -73,13 +78,11 @@ class App extends Component {
                     >
                         Search title:
                     </Search>
+
+                    <Articles articles={articles} searchTerm={searchTerm} onDismiss={this.onArchive} />
+                    <ButtonWithLoading onClick={this.loadMore} isLoading={isLoading}>Moar!</ButtonWithLoading>
+                    <CommentBrowser />
                 </div>
-                {articles.length
-                    ? <Articles articles={articles} searchTerm={searchTerm} onDismiss={this.onDismiss}/>
-                    :
-                    <div> No results </div>
-                }
-                <ButtonWithLoading onClick={this.loadMore} isLoading={isLoading}>Moar!</ButtonWithLoading>
             </div>
         );
     }
