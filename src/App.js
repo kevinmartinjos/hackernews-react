@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import './App.css';
+import styles from './App.module.css';
 import Navbar from "./Components/Layouts/Navbar";
 import Sidebar from "./Components/Layouts/Sidebar";
 import MainContent from "./Components/MainContent/MainContent";
@@ -26,7 +26,7 @@ const ConnectedMainContent = connect(mapStateToProps, mapDispatchToProps)(MainCo
 class App extends Component {
     render() {
         return (
-            <div id="app">
+            <div id={styles.App}>
                 <Navbar />
                 <Sidebar />
                 <ConnectedMainContent isArchive={this.props.isArchive}/>

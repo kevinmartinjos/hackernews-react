@@ -1,11 +1,11 @@
 import React from 'react';
-import {Comment as SemanticComment} from 'semantic-ui-react';
+import {Comment as SemanticComment, Header, Icon} from 'semantic-ui-react';
 import ReactHtmlParser from 'react-html-parser';
-
+import styles from './CommentBrowser.module.css';
 import Loading from "../Loading/Loading";
 
 const Comment = ({comment}) =>
-    <div className="comment" key={comment.id}>
+    <div className={styles.comment} key={comment.id}>
         <SemanticComment>
             <SemanticComment.Content>
                 <SemanticComment.Author>{comment.author}</SemanticComment.Author>
@@ -17,12 +17,17 @@ const Comment = ({comment}) =>
     </div>;
 
 const CommentBrowser = ({parentComment, isCommentLoading}) =>
-    <div id="CommentBrowser">
-        <h3>Comments</h3>
+    <div id={styles.CommentBrowser}>
+        <Header id={styles.header}>
+            <Icon name="comment outline"/>
+            <Header.Content>Comments</Header.Content>
+        </Header>
         <SemanticComment.Group>
         {isCommentLoading
             ? <Loading/>
-            : <Comment comment={parentComment}/>
+            : <SemanticComment.Group>
+                {parentComment.children.map(childComment => <Comment comment={childComment}/>)}
+            </SemanticComment.Group>
         }
         </SemanticComment.Group>
     </div>;

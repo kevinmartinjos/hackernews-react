@@ -1,9 +1,10 @@
 import React from 'react';
 import {Button} from 'semantic-ui-react';
 import {WithLoading} from "../Loading/Loading";
+import styles from './Buttons.module.css';
 
 const MoreButton = ({type="button", onClick, children, className='', size="mini"}) =>
-    <Button type={type} onClick={onClick} className={className} id="MoreButton" size={size}>
+    <Button type={type} onClick={onClick} className={className} id={styles.MoreButton} size={size}>
         {children}
     </Button>;
 

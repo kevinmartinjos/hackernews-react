@@ -1,0 +1,12 @@
+#CommentBrowser {
+    grid-area: 2/6/2/7;
+    padding-left: 25px;
+}
+
+.comment .comment{
+    margin-left: 25px;
+}
+
+#header {
+    /*margin-left: 25px;*/
+}

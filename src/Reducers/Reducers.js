@@ -37,8 +37,9 @@ const articleReducer = (articleState={articles: [], page:0, searchTerm: ""}, act
 };
 
 const applyAddArticles = (articleState, action) => {
+    const articlesWithTitle = action.articles.filter(article => article.title);
     return {
-        articles: [...articleState.articles, ...action.articles],
+        articles: [...articleState.articles, ...articlesWithTitle],
         page: action.page,
         searchTerm: action.searchTerm
     };

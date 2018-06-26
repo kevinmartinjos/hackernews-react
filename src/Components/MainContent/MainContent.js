@@ -6,7 +6,7 @@ import Archives from "../Archives/Archives";
 import Articles from "../Articles/Articles";
 import {connect} from 'react-redux';
 import {ARCHIVE_ADD} from "../../Actions/Actions";
-
+import styles from './MainContent.module.css';
 const PATH_BASE = 'https://hn.algolia.com/api/v1';
 const PATH_SEARCH = '/search';
 const PARAM_SEARCH = 'query=';
@@ -105,7 +105,7 @@ class MainContent extends Component {
         const {isArchive} = this.props;
 
         return (
-            <div id="MainContent">
+            <div id={styles.MainContent}>
                 <Search
                     searchTerm={searchTerm}
                     onSearchTermChange={this.onSearchTermChange}

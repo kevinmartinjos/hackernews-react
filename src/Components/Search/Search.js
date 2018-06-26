@@ -1,5 +1,6 @@
 import React, {Component, createRef} from "react";
 import {Form, Button} from 'semantic-ui-react';
+import styles from './Search.module.css';
 
 class Search extends Component {
     constructor(props) {
@@ -12,14 +13,12 @@ class Search extends Component {
         }
     }
     render() {
-        const {onSubmit, searchTerm, children, onSearchTermChange} = this.props;
+        const {onSubmit, searchTerm, onSearchTermChange} = this.props;
         return (
-            <Form onSubmit={onSubmit} id="Search">
-                <Form.Group>
-                    <Form.Input type="text" value={searchTerm} onChange={onSearchTermChange} ref={this.searchBoxRef} placeholder="Search"/>
-                    <Button type="submit"> Go! </Button>
-                </Form.Group>
-            </Form>
+            <form onSubmit={onSubmit} id={styles.Search}>
+                <input type="text" value={searchTerm} onChange={onSearchTermChange} ref={this.searchBoxRef} placeholder="Search" className={styles.search_box}/>
+                <Button type="submit"> Go! </Button>
+            </form>
         );
     }
 }

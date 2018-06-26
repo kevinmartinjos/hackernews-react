@@ -1,0 +1,11 @@
+#Articles {
+    grid-area: 2/1/2/6;
+}
+.spaced {
+    margin-right: 5px;
+}
+
+.hover:hover {
+    color: lightblue;
+    cursor: pointer;
+}

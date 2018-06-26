@@ -1,20 +1,21 @@
 import React from 'react';
-import {Item, Segment, Container} from 'semantic-ui-react';
+import {Item, Segment, Container, Icon} from 'semantic-ui-react';
 import Button from "../Buttons/Button";
-
+import styles from './Articles.module.css'
 const Articles = ({articles, archivedArticleIDs, onArchive, onViewComments}) =>
-    <div id="Articles">
+    <div id={styles.Articles}>
         <Container>
         <Item.Group>
             {articles.map(article =>
-                <Segment>
-                <Item key={article.objectID}>
+                <Segment key={article.objectID}>
+                <Item>
                     <Item.Content>
                         <Item.Header as='a'>{article.title}</Item.Header>
                         <Item.Meta>Author: {article.author}</Item.Meta>
                         <Item.Meta>
-                            <span>{article.num_comments} comments</span>
-                            <span>{article.points} points</span>
+                            <span className={styles.spaced}>{article.num_comments} comments</span>
+                            <span className={styles.spaced}>{article.points} points</span>
+                            <Icon name='comment outline' onClick={() => onViewComments(article.objectID)} className={styles.hover}/>
                         </Item.Meta>
                     </Item.Content>
                     {!archivedArticleIDs.includes(article.objectID) &&
@@ -25,7 +26,6 @@ const Articles = ({articles, archivedArticleIDs, onArchive, onViewComments}) =>
                             Archive
                         </Button>
                     }
-                    <span><Button onClick={() => onViewComments(article.objectID)}>View comments</Button></span>
                 </Item>
                 </Segment>
             )}
