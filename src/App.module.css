@@ -1,4 +1,4 @@
 #App {
     display: grid;
-    grid-template: 10% 90%/10% 90%;
+    grid-template: 50px 3fr/10% 90%;
 }

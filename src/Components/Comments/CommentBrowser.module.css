@@ -1,10 +1,23 @@
 #CommentBrowser {
-    grid-area: 2/6/2/7;
+    grid-area: 2/6/4/7;
     padding-left: 25px;
+}
+
+.comment {
+    color: gray;
 }
 
 .comment .comment{
     margin-left: 25px;
+}
+
+.clickable {
+    color: gray;
+}
+
+.clickable:hover {
+    cursor: pointer;
+    color: cadetblue;
 }
 
 #header {

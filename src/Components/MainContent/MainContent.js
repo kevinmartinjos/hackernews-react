@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import CommentBrowser from "../Comments/CommentBrowser";
-import {ButtonWithLoading} from "../Buttons/Button";
+import {Icon} from 'semantic-ui-react';
 import Search from "../Search/Search";
 import Archives from "../Archives/Archives";
 import Articles from "../Articles/Articles";
@@ -11,6 +11,7 @@ const PATH_BASE = 'https://hn.algolia.com/api/v1';
 const PATH_SEARCH = '/search';
 const PARAM_SEARCH = 'query=';
 const PARAM_PAGE = 'page=';
+const PARAM_HITS_PER_PAGE = 'hitsPerPage=5';
 
 const mapStateToArticleProps = state => {
     return {
@@ -69,7 +70,7 @@ class MainContent extends Component {
     }
     fetchSearchResult(searchTerm, page=0) {
         this.setState({isLoading: true});
-        fetch(`${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${searchTerm}&${PARAM_PAGE}${page}`)
+        fetch(`${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${searchTerm}&${PARAM_PAGE}${page}&${PARAM_HITS_PER_PAGE}`)
             .then(response => response.json())
             .then(result => this.setSearchResult(result))
             .catch(error => error);
@@ -112,7 +113,8 @@ class MainContent extends Component {
                     onSubmit={this.onSearchSubmit}
                 />
                 {isArchive ? <ConnectedArchives/> : <ConnectedArticles onViewComments={this.onViewComments}/>}
-                {!isArchive && <ButtonWithLoading onClick={this.loadMore} isLoading={isLoading}>Moar!</ButtonWithLoading>}
+                {/*{!isArchive && <ButtonWithLoading onClick={this.loadMore} isLoading={isLoading}>Moar!</ButtonWithLoading>}*/}
+                {!isArchive && <Icon name="sync" onClick={this.loadMore} loading={isLoading} id={styles.MoreButton}/>}
                 <CommentBrowser parentComment={selectedArticle} isCommentLoading={isCommentLoading}/>
             </div>
         )

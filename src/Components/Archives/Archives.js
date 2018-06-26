@@ -1,6 +1,7 @@
 import React from 'react';
 import {Item, Segment} from 'semantic-ui-react';
 import styles from './Archives.module.css';
+import articleStyles from '../Articles/Articles.module.css';
 
 const Archives = ({articles}) =>
     <div id={styles.Archives}>
@@ -10,8 +11,8 @@ const Archives = ({articles}) =>
                     <Item>
                         <Item.Content>
                             <Item.Header as='a'>{article.title}</Item.Header>
-                            <Item.Meta>Author: {article.author}</Item.Meta>
-                            <Item.Meta>
+                            <Item.Meta className={articleStyles.stats}>Author: {article.author}</Item.Meta>
+                            <Item.Meta className={articleStyles.stats}>
                                 <span className={styles.spaced}>{article.num_comments} comments</span>
                                 <span className={styles.spaced}>{article.points} points</span>
                             </Item.Meta>

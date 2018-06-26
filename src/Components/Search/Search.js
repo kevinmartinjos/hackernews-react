@@ -1,5 +1,5 @@
 import React, {Component, createRef} from "react";
-import {Form, Button} from 'semantic-ui-react';
+import {Button} from 'semantic-ui-react';
 import styles from './Search.module.css';
 
 class Search extends Component {
@@ -17,7 +17,7 @@ class Search extends Component {
         return (
             <form onSubmit={onSubmit} id={styles.Search}>
                 <input type="text" value={searchTerm} onChange={onSearchTermChange} ref={this.searchBoxRef} placeholder="Search" className={styles.search_box}/>
-                <Button type="submit"> Go! </Button>
+                <Button type="submit" size="mini"> Go! </Button>
             </form>
         );
     }
