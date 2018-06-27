@@ -6,7 +6,6 @@ import {Provider} from 'react-redux';
 import 'semantic-ui-css/semantic.min.css';
 import './index.css';
 import App from './App';
-import registerServiceWorker from './registerServiceWorker';
 import archiveReducer, {articleReducer} from "./Reducers/Reducers";
 
 const persistedState = localStorage.getItem('hackernews_state') ? JSON.parse(localStorage.getItem('hackernews_state')) : {};
@@ -34,4 +33,3 @@ ReactDOM.render(
 if (module.hot) {
     module.hot.accept();
 }
-registerServiceWorker();
