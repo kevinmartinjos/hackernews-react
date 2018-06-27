@@ -19,7 +19,7 @@ Typescript/Flow
 #### Javascript
 1. Use [ES6](https://codeburst.io/javascript-wtf-is-es6-es8-es-2017-ecmascript-dca859e4821c)
 2. Use [promises](https://gist.github.com/domenic/3889970) over [callbacks](https://techbrunch.gousto.co.uk/2016/04/22/callback-hell/callbacks.png)
-3. Use [functional programming goodies](https://medium.com/jsguru/javascript-functional-programming-map-filter-and-reduce-846ff9ba492d) that come with javascript. Y tho? See [this] SO question (https://stackoverflow.com/questions/34385243/why-is-immutability-so-important-or-needed-in-javascript) and if you have a lot of free time, [The Dao of Immutability](https://medium.com/javascript-scene/the-dao-of-immutability-9f91a70c88cd)
+3. Use [functional programming goodies](https://medium.com/jsguru/javascript-functional-programming-map-filter-and-reduce-846ff9ba492d) that come with javascript. Y tho? See [this] (https://stackoverflow.com/questions/34385243/why-is-immutability-so-important-or-needed-in-javascript) SO question and if you have a lot of free time, [The Dao of Immutability](https://medium.com/javascript-scene/the-dao-of-immutability-9f91a70c88cd)
  
 #### ReactJS
 1. Do not manipulate the DOM directly unless there's no other way. No, you cannot use jQuery. Read about [Refs](https://reactjs.org/docs/refs-and-the-dom.html) and [lifting the state up](https://reactjs.org/docs/lifting-state-up.html)
