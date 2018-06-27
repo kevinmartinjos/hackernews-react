@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import {combineReducers, createStore} from 'redux';
-import {Provider, connect} from 'react-redux';
+import {Provider} from 'react-redux';
 import 'semantic-ui-css/semantic.min.css';
 import './index.css';
 import App from './App';

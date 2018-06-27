@@ -1,3 +1,4 @@
+// @flow
 import React, {Component} from 'react';
 import CommentBrowser from "../Comments/CommentBrowser";
 import {Icon} from 'semantic-ui-react';
@@ -7,6 +8,7 @@ import Articles from "../Articles/Articles";
 import {connect} from 'react-redux';
 import {ARCHIVE_ADD} from "../../Actions/Actions";
 import styles from './MainContent.module.css';
+import type {Article} from "../../Types";
 const PATH_BASE = 'https://hn.algolia.com/api/v1';
 const PATH_SEARCH = '/search';
 const PARAM_SEARCH = 'query=';
@@ -40,29 +42,45 @@ const mapDispatchToArchivesProps = state => {
 
 const ConnectedArchives = connect(mapStateToArchivesProps, mapDispatchToArchivesProps)(Archives);
 
-class MainContent extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            searchTerm: this.props.searchTerm,
-            isLoading: false,
-            selectedArticle: {children: []},
-            isCommentLoading: false
-        };
+type SelectedArticle = {
+    children: Array<Article>
+};
 
-        this.onSearchTermChange = this.onSearchTermChange.bind(this);
-        this.setSearchResult = this.setSearchResult.bind(this);
-        this.onSearchSubmit = this.onSearchSubmit.bind(this);
-        this.fetchSearchResult = this.fetchSearchResult.bind(this);
-        this.loadMore = this.loadMore.bind(this);
-        this.onViewComments = this.onViewComments.bind(this);
+type State = {
+    searchTerm: ?string,
+    isLoading: boolean,
+    selectedArticle: SelectedArticle,
+    isCommentLoading: boolean
+};
+
+type Props = {
+    isArchive: boolean,
+    searchTerm?: string,
+    onSearchResult: (Array<Article>, number, ?string) => void
+};
+
+class MainContent extends Component<Props, State> {
+    state = {
+        searchTerm: this.props.searchTerm,
+        isLoading: false,
+        selectedArticle: {children: []},
+        isCommentLoading: false
+    };
+    constructor(props: Props) {
+        super(props);
+        (this: any).onSearchTermChange = this.onSearchTermChange.bind(this);
+        (this: any).setSearchResult = this.setSearchResult.bind(this);
+        (this: any).onSearchSubmit = this.onSearchSubmit.bind(this);
+        (this: any).fetchSearchResult = this.fetchSearchResult.bind(this);
+        (this: any).loadMore = this.loadMore.bind(this);
+        (this: any).onViewComments = this.onViewComments.bind(this);
     }
 
     onSearchTermChange(event) {
         this.setState({searchTerm: event.target.value});
     }
 
-    setSearchResult(result) {
+    setSearchResult(result: ?string) {
         const page = result.page;
         let hits = result.hits;
         this.setState({isLoading: false});
@@ -74,18 +92,19 @@ class MainContent extends Component {
             .then(response => response.json())
             .then(result => this.setSearchResult(result))
             .catch(error => error);
+
     }
     loadMore() {
         const {searchTerm} = this.state;
         this.fetchSearchResult(searchTerm, this.props.page + 1);
     }
-    onSearchSubmit(event) {
+    onSearchSubmit(event: any) {
         const {searchTerm} = this.state;
         event.preventDefault();
         this.props.onSearchSubmit();
         this.fetchSearchResult(searchTerm);
     }
-    onViewComments(objectID) {
+    onViewComments(objectID: number) {
         const PATH_BASE = 'http://hn.algolia.com/api/v1/items/';
         this.setState({isCommentLoading: true});
         fetch(`${PATH_BASE}${objectID}`).
@@ -107,6 +126,7 @@ class MainContent extends Component {
 
         return (
             <div id={styles.MainContent}>
+                Hello world
                 <Search
                     searchTerm={searchTerm}
                     onSearchTermChange={this.onSearchTermChange}

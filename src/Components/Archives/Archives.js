@@ -1,9 +1,14 @@
+// @flow
 import React from 'react';
 import {Item, Segment} from 'semantic-ui-react';
 import styles from './Archives.module.css';
 import articleStyles from '../Articles/Articles.module.css';
+import type {Article} from "../../Types";
 
-const Archives = ({articles}) =>
+type Props = {
+    articles: Array<Article>
+}
+const Archives = ({articles}: Props) =>
     <div id={styles.Archives}>
         <Item.Group>
             {articles.map(article =>

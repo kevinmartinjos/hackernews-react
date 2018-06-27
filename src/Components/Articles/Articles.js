@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {Item, Segment, Container, Icon} from 'semantic-ui-react';
-import Button from "../Buttons/Button";
 import styles from './Articles.module.css'
 import CommentButton from "./CommentButton";
 

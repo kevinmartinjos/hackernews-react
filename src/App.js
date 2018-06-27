@@ -1,3 +1,4 @@
+// @flow
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import styles from './App.module.css';
@@ -23,7 +24,11 @@ const mapDispatchToProps = dispatch => {
 
 const ConnectedMainContent = connect(mapStateToProps, mapDispatchToProps)(MainContent);
 
-class App extends Component {
+type Props = {
+    isArchive: boolean
+};
+
+class App extends Component<Props> {
     render() {
         return (
             <div id={styles.App}>

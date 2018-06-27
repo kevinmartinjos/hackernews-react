@@ -24,6 +24,7 @@
     "eslint-plugin-react": "7.4.0",
     "extract-text-webpack-plugin": "3.0.2",
     "file-loader": "1.1.5",
+    "flow-bin": "^0.75.0",
     "fs-extra": "3.0.1",
     "html-webpack-plugin": "2.29.0",
     "identity-obj-proxy": "^3.0.0",
@@ -52,13 +53,18 @@
     "whatwg-fetch": "2.0.3"
   },
   "scripts": {
-    "start": "node scripts/start.js",
+    "start": "flow status && node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "flow": "flow"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-flow": "^6.23.0",
+    "flow-status-webpack-plugin": "^0.1.7",
+    "flowtype-loader": "^0.2.2",
     "gh-pages": "^1.2.0",
     "react-test-renderer": "^16.4.1"
   },
