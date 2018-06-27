@@ -36,10 +36,13 @@ Use Redux to manage your state variable only when:
 1. You find yourself passing down the state as props to more than 3 levels deep
 2. A lot of components need access to the variable
 
-Good examples of variables that should be managed by Redux:
+**Good examples of variables that should be managed by Redux:**
 1. The user who is currently logged in
 2. All items that the user added to his/her shopping cart
 
+**Good examples of variables that should be managed by the local state:**
+1. `is_loading` for a button
+ 
 Also, setState() [is async](https://medium.com/@wereHamster/beware-react-setstate-is-asynchronous-ce87ef1a9cf3).
 
 [This](https://spin.atomicobject.com/2017/06/07/react-state-vs-redux-state/) is a good guide to follow when you can't decide where to store your state.
